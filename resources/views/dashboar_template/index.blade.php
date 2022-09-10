@@ -1,6 +1,11 @@
+
+@if(!Session::has('id_siswa'))
+    <script>
+        window.location.href = "{{url('/login')}}"
+    </script>
+@endif
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +16,7 @@
     <meta name="description"
         content="Matrix Admin Lite Free Version is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>IVLab  -@yield('title-page')</title>
+    <title>INCUBE  -@yield('title-page')</title>
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('matrix/assets/images/favicon.png')}}">
     <!-- Custom CSS -->

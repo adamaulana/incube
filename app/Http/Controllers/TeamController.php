@@ -18,6 +18,8 @@ class TeamController extends Controller
         foreach($getproduk as $dataproduk){
             $produk = $dataproduk->id;
         }
+
+        session(['id_produk' => $produk]);
         
         $getceo = DB::table('siswa')
         ->where('id', $id_ceo)
@@ -40,12 +42,19 @@ class TeamController extends Controller
         ->where('id_produk',$produk)
         ->get();
 
-        return view('dashboard/tahap_team')
-        ->with(compact('getproduk'))
-        ->with(compact('getceo'))
-        ->with(compact('getmember'))
-        ->with(compact('position'))
-        ->with(compact('countmember'));
+        $track = Session::get('track');
+        $track_status = Session::get('track_status');
+        if($track == 2 && $track_status == 0){
+            return view('dashboard/tahap_team')
+            ->with(compact('getproduk'))
+            ->with(compact('getceo'))
+            ->with(compact('getmember'))
+            ->with(compact('position'))
+            ->with(compact('countmember'));
+        }else{
+            return redirect('/');
+        }
+
     }
 
     public function tambah_member(Request $req)

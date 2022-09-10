@@ -41,7 +41,7 @@ class SiswaController extends Controller
 
     // logout siswa
     public function logout(Request $request){        
-        $request->session()->forget('id_siswa');
+        Session::flush();
         return redirect('/login');
     }
 
@@ -67,27 +67,46 @@ class SiswaController extends Controller
             ->where('id_siswa',$id_siswa)
             ->count();
 
+ 
+
             session(['id_siswa' => $id_siswa]);
             session(['nis_siswa' => $nis_siswa]);
             
             if($cektim != 0){
                 $cekposition = 0; 
+                $id_produk_member = 0;
                 $gettim = DB::table('member')
+                ->select('member.*', 'master_step.step_number', 'track_step.status')
+                ->join('product', 'product.id', 'member.id_produk')
+                ->join('track_step', 'track_step.id_ceo', 'product.id_ceo')
+                ->join('master_step','master_step.id','track_step.id_step')
                 ->where('id_siswa',$id_siswa)
                 ->get();
+
+                
                 foreach($gettim as $tim){
                     $cekposition = $tim->position;
+                    $id_produk_member = $tim->id_produk;
+                    session(['track' => $tim->step_number]);
+                    session(['track_status' => $tim->status]);
                 }
+
+                
+                
+                session(['id_produk' => $id_produk_member]);
+                
 
                 if($cekposition == 1){
                     $cektrack = DB::table('track_step')
-                    ->where('id_ceo',$id_siswa)
+                    ->select('master_step.step_number as urutan','track_step.*')
+                    ->join('master_step','master_step.id','track_step.id_step')
+                    ->where('track_step.id_ceo',$id_siswa)
                     ->get();
 
                     $track_poin = 0;
                     $acc_poin = 0;
                     foreach($cektrack as $datatrack){
-                        $track_poin = $datatrack->id_step;
+                        $track_poin = $datatrack->urutan;
                         $acc_poin = $datatrack->status;
                     }
 
@@ -102,7 +121,7 @@ class SiswaController extends Controller
                             return redirect($setroute->routing);
                         }
                     }elseif($track_poin <= 2 && $acc_poin == 1){
-                        echo "Maaf anda perlu acc mentor untuk ke tahap selanjutnya";   
+                        return redirect('/');                      
                     }else{
                         return redirect('/');
                     }
@@ -111,7 +130,20 @@ class SiswaController extends Controller
 
                 }
             }else{
-                return redirect('/product_abstract');             
+                // $track = Session::get('track');
+                // $track_status = Session::get('track_status');
+                
+                // if($track == 1 && $track_status == 1){
+                //     return redirect('/');
+                // }else if ($track == 1 && $track_status == 0){
+                //     session(['track' => '1']);
+                //     session(['track_status' => '0']);
+                //     return redirect('/product_abstract');  
+                // }else{
+                    session(['track' => '1']);
+                    session(['track_status' => '0']);
+                    return redirect('/product_abstract');  
+                // }           
             }
 
 		}else{
