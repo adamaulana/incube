@@ -1,5 +1,5 @@
 @section('title-page')
-    Step 3 : Membuat Poster dan Video Produk
+    Step 4 : Membuat Poster dan Video Produk
 @endsection
 @section('css')
     <style>

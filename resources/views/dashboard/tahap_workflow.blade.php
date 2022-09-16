@@ -1,5 +1,5 @@
 @section('title-page')
-    Step 2 : Membuat Logo Brand dan  Prototyping
+    Step 3 : Membuat Logo Brand dan  Prototyping
 @endsection
 @section('css')
     <style>
@@ -22,50 +22,81 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <div class="row p-2">
-                        <h3>Prototyping dan Alur Produk</h3>
-                        <small>Dalam tahap ini, silahkan membuat protoyping dari produk dalam bisnis ini.Dalam pembuatan prototyping ini yang digunakan 
-                            adalah Figma. Silahkan melihat referensi dan tutorial di bawah ini untuk untuk membuat prototyping sekalligus Design User Interface
-                            dari produkmu<small>
-                            <br><br>
-                            <button class="btn btn-primary">Tutorial Prototyping</button>
-                            <button class="btn btn-warning">Referensi UI Design</button>                         
-                    </div>               
+                    <div class="row">
+                        <div class="col-md-5">
+                            <center><img src="{{asset('assets/images/team_spirit.svg')}}" style="width:60%" class="m-5" alt=""></center>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="mt-5"> <strong>Selamat Datang Tahap di Prototyping dan Branding Logo </strong></h2>        
+                            <p>Dalam tahap ini, silahkan membuat protoyping dari produk dalam bisnis ini.Dalam pembuatan prototyping ini yang digunakan 
+                            adalah Figma.<</p>
+                            <a href="" class="btn btn-primary text-white"> Submit Progress &nbsp;<i class="fas fa-arrow-circle-right"></i> </a>
+                        </div>    
+                    </div>
+        
                 </div>
             </div>            
         </div>    
     </div>
     
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="card">
                 <div class="card-body">
-                    <div class="row">
+                    
+                    <div class="row p-2">
                         <h3>Link Figma</h3>
                         <p style="font-size:15px;">
-                            Langkah menggunakan figma project <br>
-                            1. Buka Figma.com <br>
-                            2. Buatlah Project Baru Figma <br>
-                            3. Buatlah UI Design dan Lakukan Prototyping
+                        Dalam membuat UI Design sekaligus prototyping di alur inkubasi ini. Kita menggunakan 
+                        tools protoyping yaitu <strong>Figma. </strong> <br>
+                        Adapun langka langkah menggunakan Figma sebagai berikut : <br>
                         </p>
-                        <br>
-                        <label for="" style="font-size:12px;">Shared Link Figma</label>
-                        <br> 
-                        <input type="text" name="" id="" class="form-control">
-                        <br> <br><br> <br>
-                        <button class="btn btn-primary">Simpan</button>
+                        <div class="p-1" style="font-size:13px;">
+                            <ol>
+                                <li>Buka <a href="https://www.figma.com" class="badge rounded-pill bg-primary" target="_blank">www.figma.com</a></li>                        
+                                <li>Arahkan cursor ke menu  <strong>Draft</strong> di sidebar menu kiri, hingga muncul tanda <strong>'+'</strong>. Dan klik tranda 
+                                <strong>+</strong> , lalu pilih <strong>New Design File</strong> untuk membuat project design baru di figma</li>
+                                <li>Pelajari Video dan Referensi berikut untuk mengawali design dan prototyping
+                                <a class="btn btn-xs btn-warning"><i class="fas fa-play"></i> Referensi dan Pembelajaran UI Design dan protoyping  </a>                         
+                                </li>                        
+                                <li> Invite email mentormu, pada project figma, Adapun email mentormu adalah <br><h3 class="badge rounded-pill bg-secondary">radityawajyusasono@gmail.com</h3></li>
+                                <li> Jangan lupa juga menyematkan link Figma dari produkmu pada form di bawah ini</h3></li>
+                            </ol>         
+                        </div>
+                        
+                        <div class="m-1">
+                            <form action="{{url('/setFigma')}}" methos="post" >
+                            {{csrf_field()}}   
+                            <label for="" style="font-size:12px;">Shared Link Figma</label>
+                            <br> 
+                            <input type="text" name="link_figma" id="" class="form-control">
+                            <br>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-5">
             <div class="card">
                 <div class="card-body">
                     <h3>Logo Produk</h3>
+                    <p>Logo akan menjadi identitas yang pertama di lihat dari produkmu. Ada banyak sekali tools 
+                        yang dapat digunakan untuk memuat logo yang menarik. Mulai dari Adobbe Ilustrator, Figma, Coreldraw, dan sejenisnya.
+                        Untuk memudahkan mengawali pembuatan logo, <strong>Hipster</strong> dalam tim mu dapat mengakses
+                        referensi ini <br>
+                        <a class="btn btn-xs btn-warning"><i class="fas fa-play"></i> Referensi dan Pembelajaran Logo Produk</a>
+                        <br> <br>
+                        Jangan lupa uplad foto dari logomu sebagai bukti progress kepada mentor
+                    </p>
                     <center>
                         <img class="w-70" src="{{asset('assets/images/noimage.png')}}" alt="">
                     </center>
                     <input type="file" class="form-control">
+                    <label for="">Deskripsi singkat dan makna logo :</label>
+                    <textarea name="" class="form-control" id="" cols="30" rows="4"></textarea>
+                    <button class="btn btn-primary">Simpan</button>
                 </div>
             </div>
         </div>

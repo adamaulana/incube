@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('master_bmc', function (Blueprint $table) {
+        Schema::create('pertanyaan_bmc', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul');
-            $table->string('deskripsi');
-            $table->string('route',50);
-            $table->string('video');
+            $table->string('pertanyaan');
+            $table->string('keterangan');
+            $table->string('id_poin_bmc');
             $table->timestamps(); 
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('pertanyaan_bmc');
     }
 };

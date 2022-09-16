@@ -41,6 +41,8 @@ class DashboardController extends Controller
                     session(['track_status' => '1']);
                     return view('dashboard/ongoing');
                 }
+            }elseif($track == 1 && $track_status == 0){
+                return redirect('/product_abstract');
             }else{
                 $id_produk = Session::get('id_produk');
                 $gettahap = DB::table('master_step')
@@ -53,6 +55,8 @@ class DashboardController extends Controller
                 $data_step = 0;
                 foreach($gettahap as $data){
                     $data_step = $data->step_number;
+                    session(['track' => $data->step_number]);
+                    session(['track_status' => $data->status]);
                 }
 
                 // $tampilan_tahap = DB::table('master_step')

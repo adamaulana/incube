@@ -4,7 +4,7 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav" class="pt-4">
-                <li class="sidebar-item"> <a data-locs="{{url('/dashboard')}}" class="sidebar-link waves-effect waves-dark sidebar-link"
+                <li class="sidebar-item {{ (request()->is('/')) ? 'selected' : '' }}" > <a data-locs="{{url('/')}}" class="sidebar-link waves-effect waves-dark sidebar-link {{ (request()->is('/')) ? 'active' : '' }}"
                          aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu" >Dashboard</span></a></li>
                 <li class="sidebar-item"> <a data-locs="{{url('/profile')}}"class="sidebar-link waves-effect waves-dark sidebar-link"

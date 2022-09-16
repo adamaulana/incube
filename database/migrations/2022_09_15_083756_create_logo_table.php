@@ -13,13 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('master_bmc', function (Blueprint $table) {
+        Schema::create('logo_produk', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('judul');
-            $table->string('deskripsi');
-            $table->string('route',50);
-            $table->string('video');
-            $table->timestamps(); 
+            $table->string('logo_produk');
+            $table->integer('id_produk');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('logo');
     }
 };
