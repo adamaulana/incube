@@ -1,8 +1,8 @@
 
 @extends('template/blankindex')
-@if(Session::has('id_bumdes'))
+@if(Session::has('id_siswa'))
     <script>
-        window.location.href = "{{url('/dashboard')}}"
+        window.location.href = "{{url('/')}}"
     </script>
 @endif
 @section('css')
@@ -98,7 +98,6 @@
             font-weight:700;
             border-radius:10px;
             text-align:center;
-
         }
 
         }
@@ -113,6 +112,7 @@
                 INCUBE  adalah platform untuk menginkubasi bisnis siswa pada mata pelajara Produk Kreatif dan Kewirausahaan
                 </p>
                 <a href="{{url('/register_siswa')}}" class="btn bt-linear nunito">Pendaftaran Siswa</a>
+                <a href="{{url('/mentor/login')}}" class="btn bt-white nunito">Login Mentor</a>
                 
             </div>
             <div class="col-lg-4 col-12">

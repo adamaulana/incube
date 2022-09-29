@@ -22,7 +22,7 @@ class BmcController extends Controller
     public function detail($id){
         $id_produk = Session::get('id_produk');
         
-        $get = DB::table('pertanyaan_bmc')
+        $databmc = DB::table('pertanyaan_bmc')
         ->select('pertanyaan_bmc.*','pertanyaan_bmc.id as id_pertanyaan_bmc', 'virtualtable.*','master_bmc.*')
         ->leftJoin(DB::raw('(SELECT * FROM jawaban_bmc WHERE id_produk ='.$id_produk.') virtualtable'),
                 function($join){
@@ -31,8 +31,10 @@ class BmcController extends Controller
         ->join('master_bmc','master_bmc.id','pertanyaan_bmc.id_poin_bmc')
         ->where('pertanyaan_bmc.id_poin_bmc',$id)
         ->get();
+        
+        $getmasterbmc = DB::table('master_bmc')->where('id',$id)->get();
         //  return var_dump($get);
-        return view('dashboard/bmc_detail')->with('databmc', $get);
+        return view('dashboard/bmc_detail')->with(compact('databmc', 'getmasterbmc'));
     }
 
     public function insertJawaban(Request $request){
@@ -89,5 +91,20 @@ class BmcController extends Controller
         ]);
 
         return redirect("/");
+    }
+
+
+    public function resultBMC($id_bmc,$id_produk){
+        $getmaster = DB::table('master_bmc')
+        ->where('id',$id_bmc)
+        ->get();
+
+        $getResult = DB::table('jawaban_bmc')
+        ->join('pertanyaan_bmc','pertanyaan_bmc.id','jawaban_bmc.id_pertanyaan')
+        ->where('pertanyaan_bmc.id_poin_bmc',$id_bmc)
+        ->where('jawaban_bmc.id_produk',$id_produk)
+        ->get();
+        
+        return view('mentor/page/detail_result_bmc')->with(compact('getResult','getmaster'));
     }
 }

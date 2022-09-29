@@ -7,13 +7,12 @@
                 <li class="sidebar-item {{ (request()->is('/')) ? 'selected' : '' }}" > <a data-locs="{{url('/')}}" class="sidebar-link waves-effect waves-dark sidebar-link {{ (request()->is('/')) ? 'active' : '' }}"
                          aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                             class="hide-menu" >Dashboard</span></a></li>
-                <li class="sidebar-item"> <a data-locs="{{url('/profile')}}"class="sidebar-link waves-effect waves-dark sidebar-link"
-                         aria-expanded="false"><i class="mdi mdi-account"></i><span
-                            class="hide-menu">Profil</span></a></li>                            
-                
-                <li class="sidebar-item"> <a data-locs="{{url('/sharing')}}" class="sidebar-link waves-effect waves-dark sidebar-link"
-                         aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-                            class="hide-menu">Team</span></a></li>
+
+                <li class="sidebar-item {{ (request()->is('feedback')) ? 'selected' : '' }}"> <a data-locs="{{url('/feedback')}}" class="sidebar-link waves-effect waves-dark sidebar-link" aria-expanded="false"><i class="mdi mdi-comment-check"></i><span
+                class="hide-menu">Feedback Mentor</span></a></li>                             
+                <li class="sidebar-item {{ (request()->is('penilaian')) ? 'selected' : '' }}"> <a data-locs="{{url('/team')}}" class="sidebar-link waves-effect waves-dark sidebar-link"
+                         aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
+                            class="hide-menu">Penilaian</span></a></li>            
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                          aria-expanded="false"><i class="mdi mdi-border-inside"></i><span
                             class="hide-menu">Mentoring</span></a></li>

@@ -24,7 +24,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <center><img src="{{asset('assets/images/team_spirit.svg')}}" style="width:60%" class="m-5" alt=""></center>
+                            <center><img src="{{asset('assets/images/ilustration/step/bmc.gif')}}" style="width:60%" class="m-5" alt=""></center>
                         </div>
                         <div class="col-md-6">
                             <h2 class="mt-5"> <strong>Selamat Datang di Tahap BMC </strong></h2>

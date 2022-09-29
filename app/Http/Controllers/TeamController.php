@@ -89,7 +89,7 @@ class TeamController extends Controller
                 }else{
                     $current_posisi = 'HACKER';
                 }
-                return redirect("/tahap_team")->with('status', "Role  yang <strong>".$current_posisi."</strong> sudahh ada di tim anda");
+                return redirect("/tahap_team")->with('status', "Role  yang ".$current_posisi." sudah ada di tim anda");
             }
         }else{
             return redirect("/tahap_team")->with('status', 'Siswa dengan NIS tersebut sudah menjadi bagian tim anda');

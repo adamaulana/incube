@@ -38,6 +38,13 @@ section{
     border:0px;
     border-radius:4px;
 }
+.bt-white{
+  padding:5px 20px;
+  background-color:white;;
+  color:var(--blue);
+  border:0px;
+  border-radius:4px;
+}
 
 .color-main{
   color:var(--main);

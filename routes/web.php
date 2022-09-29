@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', [DashboardController::class,'index']);
 Route::get('/', 'DashboardController@index');
 
+
 // // Autentifikasi
 Route::get('/register_mentor', 'DashboardController@register_mentor');
 Route::get('/register_siswa', 'DashboardController@register_siswa');
@@ -24,6 +25,14 @@ Route::get('/logout_siswa', 'SiswaController@logout');
 Route::post('/signin', 'SiswaController@login');
 // Route::get('/dashboard', 'DashboardController@index');
 Route::get('/login', 'DashboardController@login');
+
+// feedback
+Route::get('/feedback', 'FeedbackController@siswaFeedBack');
+Route::post('/konfirmFeed', 'FeedbackController@konfirmFeed');
+
+// penilaian
+Route::get('/penilaian', 'PenilaianController@siswaPenilaian');
+
 
 // produk
 Route::post('/register_produk', 'ProdukController@registerProduk');
@@ -47,8 +56,34 @@ Route::get('/submit_bmc','BmcController@updateTrack');
 
 // tahap prototype
 Route::get('/proto','ProtoController@index');
-Route::get('/setFigma','ProtoController@setFigma');
+Route::post('/setFigma','ProtoController@setFigma');
+Route::post('/setLogo','ProtoController@setLogo');
+Route::get('/submitProto','ProtoController@updateTrack');
 
 
 // tahap publikasi
 Route::get('/publikasi','PublikasiController@index');
+Route::post('/setVideo','PublikasiController@setVideo');
+Route::post('/setPoster','PublikasiController@setPoster');
+Route::get('/submitPublikasi','PublikasiController@updateTrackPublikasi');
+
+// tahap presentasi
+Route::get('/presentasi','PresentasiController@index');
+Route::get('/submitDeck','PresentasiController@updateTrackDeck');
+Route::post('/setPitchDeck','PresentasiController@setDeck');
+
+
+// mentor
+Route::get('/mentor', 'MentorController@index');
+Route::get('/mentor/login', 'MentorController@login');
+Route::get('/mentor/logout', 'MentorController@logout');
+Route::post('/mentor/signin', 'MentorController@signin');
+Route::get('/mentor/penilaian', 'PenilaianController@index_mentor');
+Route::get('/mentor/produk', 'ProdukController@getProduk');
+Route::get('/mentor/detail_penilaian/{id}', 'PenilaianController@detail_penilaian');
+Route::get('/mentor/detail_produk/{id}', 'ProdukController@detail_produk');
+Route::post('/mentor/inputNilai', 'PenilaianController@inputNilai');
+Route::post('/mentor/editNilai', 'PenilaianController@editNilai');
+Route::post('/mentor/editTrack', 'ProdukController@editTrack');
+Route::get('/mentor/detail_result_bmc/{id_bmc}/{id_produk}', 'BmcController@resultBMC');
+Route::get('/mentor/feedback', 'FeedbackController@getFeedback');

@@ -12,6 +12,11 @@
             color:#00000;
             padding:15px;            
         }
+
+        .modal-body iframe{
+            width:100%;
+            height:500px;
+        }
         
 
         @media only screen and (max-width:720px){
@@ -30,19 +35,21 @@
                 <div class="card-body">
                     <div class="row">
                     <div class="col-md-5">
-                            <center><img src="{{asset('assets/images/team_spirit.svg')}}" style="width:60%" class="m-5" alt=""></center>
+                        @foreach($getmasterbmc as $dataz)
+                            <center><img src="{{asset('assets/images/'.$dataz->icon)}}" style="width:40%" class="m-5" alt=""></center>
                         </div>
                         <div class="col-md-6">
-                            <h2 class="mt-5"> <strong>Selamat Datang di Tahap BMC </strong></h2>
-                            <h3>Apa itu BMC  ?</h3>
-                            <p>Business Model Canvas (BMC) adalah alat manajemen strategis untuk mendefinisikan dan mengomunikasikan ide atau konsep bisnis dengan cepat dan mudah.
-                                Ini adalah dokumen satu halaman yang bekerja melalui elemen dasar bisnis atau produk, menyusun ide dengan cara yang efektif.</p>
-                            <a href="" class="btn btn-lg btn-success text-white"> <i class="fas fa-play"></i> &nbsp;Klik Untuk Melihat Video Penjelasan BMC  </a>
+                            <h2 class="mt-5"> <strong>{{$dataz->judul}} </strong></h2>
+                            <h5>Apa itu {{$dataz->judul}}  ?</h5>
+                            <p>{{$dataz->deskripsi}}</p>
+                            <a href="{{url('/bmc')}}" class="btn btn-warning text-white"> <i class="fas fa-chevron-left"></i> &nbsp; Kembali ke BMC </a>
+                            <button class="btn btn-success text-white" data-bs-toggle="modal" data-bs-target="#materiModal"> <i class="fas fa-play"></i> &nbsp;Video Penjelasan {{$dataz->judul}}  </button>
                         </div>    
                     </div>         
                 </div>
             </div>
-        <h4>Pertanyaan Terkait Value Proposition : </h4>
+        <h4>Pertanyaan Terkait {{$dataz->judul}}: </h4>
+        @endforeach
             <div class="row">
                 @php 
                     $no = 1;
@@ -99,12 +106,31 @@
   </div>
 </div>
 
+
+<!-- materi modal -->
+<div class="modal fade" id="materiModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+            @php echo htmlspecialchars_decode($dataz->video) @endphp
+        </div>
+        <div class="modal-footer">
+            <button type="button"  class="btn btn-danger text-white" data-bs-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 @section('js')
 <script src="{{asset('assets/js/custom.js')}}"></script>
 <script>
     $(function(){
-        
+        $('#materiModal').modal('show');
+
         $(".jawab").click(function(){
             var pertanyaan   = $(this).data('pertanyaan');
             var idpertanyaan = $(this).data('idpertanyaan');

@@ -76,12 +76,15 @@ class DashboardController extends Controller
                 ->orderBy('master_step.step_number','ASC')
                 ->get();
 
+                $tim = DB::table('product')->where('id',$id_produk)->get();
+
                 $track = Session::get('track');
                 $track_status = Session::get('track_status');
                 if($track == 1 && $track_status == 0){
                     return redirect('/product_abstract');  
                 }else{
-                    return view('dashboard/dashboard')->with('data_tahap',$tampilan_tahap);
+                    return view('dashboard/dashboard')
+                    ->with(compact('tampilan_tahap','tim'));
                 }
             }
         }else{

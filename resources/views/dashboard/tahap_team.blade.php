@@ -111,7 +111,7 @@
                             <br>
                     @else
                         <div class="col-md-5">
-                            <center><img src="{{asset('assets/images/team_spirit.svg')}}" style="width:60%" class="m-5" alt=""></center>
+                            <center><img src="{{asset('assets/images/ilustration/step/team.gif')}}" style="width:60%" class="m-5" alt=""></center>
                         </div>
                         <div class="col-md-6">
                             <h2 class="mt-5">Tim Sudah Terbentuk</h2>
@@ -121,9 +121,9 @@
                             <form action="/lock_team" method="post">
                             {{csrf_field()}}  
                             @foreach($getproduk as $dataproduk)
-                            <input type="number" value="{{$dataproduk->id}}" name="id_produk">                                
+                            <input type="hidden" value="{{$dataproduk->id}}" name="id_produk">                                
                             @endforeach
-                            <input type="number" value="{{Session('id_siswa')}}" name="id_siswa">                                
+                            <input type="hidden" value="{{Session('id_siswa')}}" name="id_siswa">                                
 
                                 <button type="submit" class="btn btn-lg btn-info text-white">Lanjutkan ke Pembuatan Profil Bisnis &nbsp;<span class="fas chevron-right"></span></button>
                             </form>
