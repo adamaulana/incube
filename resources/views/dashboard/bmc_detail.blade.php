@@ -114,11 +114,11 @@
       <div class="modal-header">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-        <div class="modal-body">
+        <div class="modal-body ytiframe">
             @php echo htmlspecialchars_decode($dataz->video) @endphp
         </div>
         <div class="modal-footer">
-            <button type="button"  class="btn btn-danger text-white" data-bs-dismiss="modal">Tutup</button>
+            <button type="button"  class="pauseYt btn btn-danger text-white" data-bs-dismiss="modal">Tutup</button>
       </div>
     </div>
   </div>
@@ -129,7 +129,7 @@
 <script src="{{asset('assets/js/custom.js')}}"></script>
 <script>
     $(function(){
-        $('#materiModal').modal('show');
+      
 
         $(".jawab").click(function(){
             var pertanyaan   = $(this).data('pertanyaan');
@@ -138,6 +138,10 @@
             $('#ed-pertanyaan').text(pertanyaan);
             $('#ed-idpertanyaan').val(idpertanyaan);            
             $('#ed-jawaban').val(jawaban);
+        });
+
+        $(".pauseYt").click(function(){
+            $(".ytiframe > iframe")[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
         });
     });
 </script>

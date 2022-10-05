@@ -57,7 +57,8 @@
                                 <li>Arahkan cursor ke menu  <strong>Draft</strong> di sidebar menu kiri, hingga muncul tanda <strong>'+'</strong>. Dan klik tranda 
                                 <strong>+</strong> , lalu pilih <strong>New Design File</strong> untuk membuat project design baru di figma</li>
                                 <li>Pelajari Video dan Referensi berikut untuk mengawali design dan prototyping
-                                <a class="btn btn-xs btn-warning"><i class="fas fa-play"></i> Referensi dan Pembelajaran UI Design dan protoyping  </a>                         
+                                <button class="btn  btn-warning" data-bs-toggle="modal" data-bs-target="#modalMateriProto"><i class="fas fa-play"></i> Pembelajaran UI Design dan protoyping  </button>                         
+                                <a href="https://dribbble.com/search/ui" target="_blank" class="btn  btn-success text-white" ><i class="fas fa-book"></i> Referensi UI Design</a>                         
                                 </li>        
                                 @foreach($dataMentor as $mentor)                
                                 <li> Invite email mentormu, pada project figma, Adapun email mentormu adalah <br><h3 class="badge rounded-pill bg-secondary">{{$mentor->email}}</h3></li>
@@ -72,7 +73,7 @@
                             {{csrf_field()}}   
                             <label for="" style="font-size:12px;">Shared Link Figma</label>
                             <br> 
-                            <input type="text" name="link_figma" id="" class="form-control">
+                            <input type="text" name="link_figma" id="" class="form-control" required="required">
                             <br>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             </form>
@@ -108,9 +109,17 @@
                         yang dapat digunakan untuk memuat logo yang menarik. Mulai dari Adobbe Ilustrator, Figma, Coreldraw, dan sejenisnya.
                         Untuk memudahkan mengawali pembuatan logo, <strong>Hipster</strong> dalam tim mu dapat mengakses
                         referensi ini <br>
-                        <a class="btn btn-xs btn-warning"><i class="fas fa-play"></i> Referensi dan Pembelajaran Logo Produk</a>
+                        <button data-bs-toggle="modal" data-bs-target="#modalMateri" class="btn btn-success text-white"><i class="fas fa-play"></i> Video Pembelajaran Logo Produk</button>
+                        <a href="https://id.pinterest.com/fangchichang/company-logo-reference/" target="_blank" class="btn btn-warning"><i class="fas fa-book"></i>&nbsp; Referensi Logo Produk </a>
                         <br> <br>
                     </p>
+
+                    @if(session('status'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{session('status')}}
+                                        
+                    </div>
+                    @endif
                     
                     @if($countLogo == 0)
                     Jangan lupa uplad foto dari logomu sebagai bukti progress kepada mentor
@@ -119,7 +128,7 @@
                     </center>
                     <form action="{{url('/setLogo')}}" method="post" enctype='multipart/form-data'>
                     {{csrf_field()}}  
-                        <input type="file" name="logo_produk" class="form-control">
+                        <input type="file" name="logo_produk" class="form-control" required="required" accept=".jpg,.png">
                         <label for="deskripsi">Deskripsi singkat dan Makna logo :</label>
                         <textarea name="deskripsi" class="form-control" id="" cols="30" rows="4"></textarea>
                         <button class="btn btn-primary" type="submit">Simpan</button>
@@ -134,7 +143,7 @@
                             </button>
                         </h4>
                         <center>
-                        <img class="m-5" id="logo-awal-produk" src="{{asset('/logo_produk/'.$logo->logo_produk)}}" alt="">
+                        <img class="m-5" style="width:200px" id="logo-awal-produk" src="{{asset('/logo_produk/'.$logo->logo_produk)}}" alt="">
                         </center>
                         <br>
                         Deskripsi singkat Logo :
@@ -166,7 +175,7 @@
             {{csrf_field()}}   
             <label for="" style="font-size:12px;">Shared Link Figma</label>
             <br> 
-            <input type="text" name="link_figma" id="ed-link" class="form-control">
+            <input type="text" name="link_figma" id="ed-link" class="form-control" required="required">
             <br>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Simpan</button>
@@ -190,9 +199,9 @@
       <div class="modal-body">
         <form action="{{url('/setLogo')}}" method="post" enctype='multipart/form-data'>
             {{csrf_field()}}   
-            <img src="" id="ed-logo" alt="">
+            <img src="" id="ed-logo" alt="" style="width:200px;">
             <br><br>
-            <input type="file" name="logo_produk"  class="form-control" required="required">
+            <input type="file" name="logo_produk"  class="form-control" required="required" accept=".png,.jpeg">
             <label for="deskripsi">Deskripsi singkat dan Makna logo :</label>
             <textarea name="deskripsi" class="form-control" id="ed-deskripsi-logo" required="required" cols="30" rows="4"></textarea>
 
@@ -206,6 +215,45 @@
   </div>
 </div>
 <!-- end of modal edit link -->
+
+<!-- modal edit logo -->
+<div class="modal fade" id="modalMateri">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="ed-pertanyaan">Pentingnya Logo Produk</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <iframe width="100%" height="400px" src="https://www.youtube.com/embed/gIcSQOiUxXc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="modal-footer">                
+                <button type="button"  class="btn btn-danger text-white" data-bs-dismiss="modal">Tutup</button>    
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal edit link -->
+
+<!-- modal edit logo -->
+<div class="modal fade" id="modalMateriProto">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="ed-pertanyaan">Video Pembelajaran Prototyping Produk dengan Figma</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <iframe width="100%" height="450px" src="https://www.youtube.com/embed/195RY7jCuZg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <div class="modal-footer">                
+                <button type="button"  class="btn btn-danger text-white" data-bs-dismiss="modal">Tutup</button>    
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- end of modal edit link -->
+
 
 @endsection
 @section('js')

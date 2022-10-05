@@ -139,10 +139,7 @@
                     </div>                    
                     <button type="submit" class="btn bt-main w-100">Daftar Sekarang</button>
                     </form>
-                    <br><br>
-                    <center>
-                    <small>Lupa Kata Sandi ? <a class="text-primary">Klik Disini</a></small>
-                    </center>
+                   
                 </div>
             </div>
         </div>   
