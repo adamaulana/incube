@@ -36,6 +36,9 @@ Route::get('/penilaian', 'PenilaianController@siswaPenilaian');
 
 // produk
 Route::post('/register_produk', 'ProdukController@registerProduk');
+Route::get('/produk', 'ProdukController@siswaProduk');
+Route::get('/detail_result_bmc/{id_bmc}/{id_produk}', 'BmcController@resultSiswaBMC');
+
 
 //tahap team and member
 Route::post('/cari_member', 'SiswaController@searchByNis');

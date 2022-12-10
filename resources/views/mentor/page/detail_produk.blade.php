@@ -13,6 +13,34 @@
     .card-step .deskripsi-step{
         height:90px;
     }
+    #poster_produk img{
+            width:400px;
+    }
+
+    @media(max-width:420px;){
+
+        .nav-link{
+            width:100%;
+        }
+        .modal-dialog{
+            max-width:100%;
+        }
+
+        #logo-produk{
+            width:80%;
+            margin-bottom:20px;
+            margin-top:20px;
+        }
+
+        #video_produk iframe{
+            width:100%;
+        }
+
+        
+        #poster_produk img{
+            width:100%;
+        }
+    }
 </style>
 @endsection
 
@@ -124,25 +152,29 @@
                                 <div class="tab-pane fade p-3" id="bmc" role="tabpanel" aria-labelledby="bmc-tab">
                                     <br>
                                     <h3>Business Model Canvas :</h3>
-                                    <table class="table table-stripped">
-                                        <tr>
-                                            <td>No</td>
-                                            <td colspan="2">Poin BMC</td>
-                                        </tr>
                                     
-                                    @php $nourut = 1; @endphp
-                                    @foreach($bmc as $databmc)
-                                        <tr>
-                                            <td>{{$nourut++}}</td>
-                                            <td>{{$databmc->judul}}</td>
-                                            <td>
-                                                <a href="{{url('/mentor/detail_result_bmc/'.$databmc->id.'/'.$data->product_id)}}" class="btn btn-primary">
-                                                    Detail &nbsp;<span class="fas fa-eye"></span>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                    </table>
+                                    <div class="table-responsive">
+                                        <table class="table table-stripped">
+                                            <tr>
+                                                <td>No</td>
+                                                <td colspan="2">Poin BMC</td>
+                                            </tr>
+                                        
+                                        @php $nourut = 1; @endphp
+                                        @foreach($bmc as $databmc)
+                                            <tr>
+                                                <td>{{$nourut++}}</td>
+                                                <td>{{$databmc->judul}}</td>
+                                                <td>
+                                                    <a href="{{url('/mentor/detail_result_bmc/'.$databmc->id.'/'.$data->product_id)}}" class="btn btn-primary">
+                                                        Detail &nbsp;<span class="fas fa-eye"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </table>
+                                    </div>
+
                                 </div>
 
                                 <div class="tab-pane fade p-3" id="figma" role="tabpanel" aria-labelledby="bmc-tab">
@@ -164,7 +196,7 @@
                                     <p>berikut adalah logo dari produk :</p>
                                     @foreach($logo as $logos)
                                     <center>
-                                        <img src="{{asset('logo_produk/'.$logos->logo_produk)}}" alt="" style="width:200px">
+                                        <img id="logo-produk" src="{{asset('logo_produk/'.$logos->logo_produk)}}" alt="" style="width:200px">
                                     </center>
                                     <p>
                                         {{$logos->deskripsi}}
@@ -188,7 +220,7 @@
                                     <h3>Poster Produk</h3>
                                     <p>berikut adalah poster dari produk :</p>
                                     @foreach($poster as $posters)
-                                    <img src="{{asset('poster_produk/'.$posters->poster_produk)}}" alt="" style="width:400px">
+                                    <img src="{{asset('poster_produk/'.$posters->poster_produk)}}" alt="">
                                     @endforeach
                                 </div>
 
@@ -238,6 +270,7 @@
             <select name="status" id="status" class="form-control">
                 <option value="0">OPEN (Acc dan Membuka proses  inkubasi selanjutnya)</option>
                 <option value="3">REVISI (Revisi dan Memberi Feedback )</option>
+                <option value="2">ACC (Acc tahap tanpa Membuka proses  inkubasi selanjutnya)</option>
             </select>
             <div id="feedback">
                 <br>

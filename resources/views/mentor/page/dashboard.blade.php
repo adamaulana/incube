@@ -58,9 +58,6 @@
                                     </tr>
                                 </table>
                                 @endforeach
-                                <button class="btn btn-warning">
-                                    <i class="fas fa-edit"></i>&nbsp; Edit Profil
-                                </button>
                             </p>
                         </div>
                     </div>               

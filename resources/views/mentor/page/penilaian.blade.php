@@ -24,34 +24,34 @@
                         <div class="col-md-12">
                             <h3>Penilaian Produk  Inkubasi : </h3>
                             <p>Pilih nama produk :</p>
-                            <table class="table table-stripped" id="table-one">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Logo</th>
-                                    <th>Nama Produk</th>
-                                    <th>CEO</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @php $no =1; @endphp
-                                @foreach($produk as $data)
-                                <tr>
-                                    <td>{{$no++}}</td>
-                                    <td><img src="{{asset('logo_produk/'.$data->logo_produk)}}" alt="logo_produk" style="width:100px;"></td>
-                                    <td>{{$data->nama_produk}}</td>
-                                    <td>{{$data->nama_siswa}}</td>
-                                    <td>
-                                        <a href="{{url('/mentor/detail_penilaian/'.$data->product_id)}}" class="btn btn-primary">
-                                            Beri Penilaian &nbsp;
-                                            <i class="fas fa-arrow-circle-right"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                                @endforeach
-                            </table> 
+                            <div class="table-responsive">
+                                <table class="table table-stripped" id="table-one">
+                                    <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Produk</th>
+                                        <th>CEO</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @php $no =1; @endphp
+                                    @foreach($produk as $data)
+                                    <tr>
+                                        <td>{{$no++}}</td>                            
+                                        <td>{{$data->nama_produk}}</td>
+                                        <td>{{$data->nama_siswa}}</td>
+                                        <td>
+                                            <a href="{{url('/mentor/detail_penilaian/'.$data->product_id)}}" class="btn btn-primary">
+                                                Beri Penilaian &nbsp;
+                                                <i class="fas fa-arrow-circle-right"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                    @endforeach
+                                </table> 
+                            </div>
                         </div>
                     </div>               
                 </div>

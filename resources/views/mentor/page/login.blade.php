@@ -112,6 +112,7 @@
                 INCUBE  adalah platform untuk menginkubasi bisnis siswa pada mata pelajara Produk Kreatif dan Kewirausahaan
                 </p>
                 <a href="{{url('/register_siswa')}}" class="btn bt-linear nunito">Pendaftaran Siswa</a>
+                <a href="{{url('/login')}}" class="btn btn-success nunito">Login Siswa</a>
                 
                 
             </div>

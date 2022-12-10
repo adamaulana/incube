@@ -107,4 +107,18 @@ class BmcController extends Controller
         
         return view('mentor/page/detail_result_bmc')->with(compact('getResult','getmaster'));
     }
+
+    public function resultSiswaBMC($id_bmc,$id_produk){
+        $getmaster = DB::table('master_bmc')
+        ->where('id',$id_bmc)
+        ->get();
+
+        $getResult = DB::table('jawaban_bmc')
+        ->join('pertanyaan_bmc','pertanyaan_bmc.id','jawaban_bmc.id_pertanyaan')
+        ->where('pertanyaan_bmc.id_poin_bmc',$id_bmc)
+        ->where('jawaban_bmc.id_produk',$id_produk)
+        ->get();
+        
+        return view('dashboard/detail_result_bmc')->with(compact('getResult','getmaster'));
+    }
 }

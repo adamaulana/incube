@@ -6,12 +6,18 @@
 <style>
       .modal-dialog{
             max-width:75%;
-        }
+    }
     .card-step{
         min-height:350px;
     }
     .card-step .deskripsi-step{
         height:90px;
+    }
+
+    @media(max-width:420px){
+        .modal-dialog{
+            max-width:100%;
+         }   
     }
 </style>
 @endsection
@@ -43,42 +49,44 @@
                                     <i class="fas fa-plus"></i>&nbsp; Tambah Feeedback
                                 </button> -->
                             </p>
-                            <table class="table table-stripped" id="table-one">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Produk</th>
-                                    <th>Topik</th>
-                                    <th>Langkah Inkubasi</th>
-                                    <th>Status</th>
-                                    <th>Aksi</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach($feed as $feedback)
+                            <div class="table-responsive">
+                                <table class="table table-stripped" id="table-one">
+                                    <thead>
                                     <tr>
-                                        <td>{{$no++}}</td>
-                                        <td>{{$feedback->nama_produk}}</td>
-                                        <td>
-                                            {{$feedback->judul}}
-                                        </td>
-                                        <td>{{$feedback->nama_step}}</td>
-                                        <td>
-                                            @if($feedback->status == 0)
-                                                <span class="badge bg-danger">Belum Terkonfirmasi</span>
-                                            @else
-                                                <span class="badge bg-success">Terkonfirmasi</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-warning detailFeed" data-bs-toggle="modal" data-bs-target="#modalDetailFeed" data-judulfeed="{{$feedback->judul}}" data-komentarfeed="{{$feedback->komentar}}" data-idfeedback="{{$feedback->id_feedback}}"> Detail &nbsp;<i class="fas fa-eye"> </i></button>
-                                        </td>
+                                        <th>No</th>
+                                        <th>Produk</th>
+                                        <th>Topik</th>
+                                        <th>Langkah Inkubasi</th>
+                                        <th>Status</th>
+                                        <th>Aksi</th>
                                     </tr>
-                                    @endforeach
+                                    </thead>
+                                    <tbody>
+                                        @php $no = 1; @endphp
+                                        @foreach($feed as $feedback)
+                                        <tr>
+                                            <td>{{$no++}}</td>
+                                            <td>{{$feedback->nama_produk}}</td>
+                                            <td>
+                                                {{$feedback->judul}}
+                                            </td>
+                                            <td>{{$feedback->nama_step}}</td>
+                                            <td>
+                                                @if($feedback->status == 0)
+                                                    <span class="badge bg-danger">Belum Terkonfirmasi</span>
+                                                @else
+                                                    <span class="badge bg-success">Terkonfirmasi</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-warning detailFeed" data-bs-toggle="modal" data-bs-target="#modalDetailFeed" data-judulfeed="{{$feedback->judul}}" data-komentarfeed="{{$feedback->komentar}}" data-idfeedback="{{$feedback->id_feedback}}"> Detail &nbsp;<i class="fas fa-eye"> </i></button>
+                                            </td>
+                                        </tr>
+                                        @endforeach
 
-                                </tbody>
-                            </table> 
+                                    </tbody>
+                                </table> 
+                            </div>
                         </div>
                     </div>               
                 </div>

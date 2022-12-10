@@ -146,6 +146,68 @@ class ProdukController extends Controller
         ));
     }
 
+    public function siswaProduk(){
+        $id = Session::get('id_produk');
+        $produk = DB::table('product')
+        ->select('product.*','mentor.*','siswa.*','product.id as product_id','logo_produk.logo_produk','mentor.nama as nama_mentor', 'siswa.nama as  nama_siswa')
+        ->leftJoin('logo_produk', 'logo_produk.id_produk','product.id')
+        ->join('mentor', 'product.id_mentor','mentor.id')
+        ->join('siswa', 'product.id_ceo','siswa.id')
+        ->where('product.id',$id)
+        ->get();
+
+        $member = DB::table('member')
+        ->join('siswa', 'siswa.id','member.id_siswa')
+        ->where('member.id_produk',$id)
+        ->orderBy('member.position','ASC')
+        ->get();
+
+        $bmc = DB::table('master_bmc')->get();
+
+        $track = DB::table('track_step')
+        ->select('master_step.*', 'track_step.*', 'track_step.id as id_track')
+        ->join('master_step','master_step.id','track_step.id_step')
+        ->where('track_step.id_produk',$id)
+        ->get();
+
+        $masterstep = DB::table('master_step')->get();
+
+        $proto = DB::table('protolink')
+        ->where('id_produk',$id)
+        ->get();
+
+        $logo = DB::table('logo_produk')
+        ->where('id_produk',$id)
+        ->get();
+
+        $video = DB::table('video_produk')
+        ->where('id_produk',$id)
+        ->get();
+
+        $poster = DB::table('poster_produk')
+        ->where('id_produk',$id)
+        ->get();
+        
+        $presentasi = DB::table('presentasi')
+        ->where('id_produk',$id)
+        ->get();
+        
+
+        return view('dashboard/produk')
+        ->with(compact(
+            'produk',
+            'track',
+            'masterstep',
+            'member',
+            'bmc',
+            'proto',
+            'logo',
+            'video',
+            'poster',
+            'presentasi'
+        ));
+    }
+
     public function editTrack(Request $req){
         $id_mentor = Session::get('id_mentor');
         $update = DB::table('track_step')

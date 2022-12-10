@@ -27,33 +27,34 @@
                         <div class="col-md-12">
                             
                             <h3>Riwayat Penilaian </h3> 
-                            
-                            <table class="table table-stripped" id="table-one">
-                                <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Langkah</th>
-                                    <th>File Penilaian</th>
-                                    
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    @php $no = 1; @endphp
-                                    @foreach($nilai as $datanilai)
+                            <div class="table-responsive">
+                                <table class="table table-stripped" id="table-one">
+                                    <thead>
                                     <tr>
-                                        <td>{{$no++}}</td>
-                                        <td>{{$datanilai->nama_step}}</td>
-                                        <td>
-                                            <a href="{{$datanilai->file_nilai}}" target="_blank">
-                                                {{$datanilai->file_nilai}}
-                                            </a>
-                                        </td>
-                                      
+                                        <th>No</th>
+                                        <th>Nama Langkah</th>
+                                        <th>File Penilaian</th>
+                                        
                                     </tr>
-                                    @endforeach
+                                    </thead>
+                                    <tbody>
+                                        @php $no = 1; @endphp
+                                        @foreach($nilai as $datanilai)
+                                        <tr>
+                                            <td>{{$no++}}</td>
+                                            <td>{{$datanilai->nama_step}}</td>
+                                            <td>
+                                                <a href="{{$datanilai->file_nilai}}" target="_blank">
+                                                    {{$datanilai->file_nilai}}
+                                                </a>
+                                            </td>
+                                        
+                                        </tr>
+                                        @endforeach
 
-                                </tbody>
-                            </table> 
+                                    </tbody>
+                                </table> 
+                            </div>
                         </div>
                     </div>               
                 </div>

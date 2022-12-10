@@ -75,30 +75,35 @@
                                 <div class="input-group-append">
                                     <button class="btn btn-warning" type="submit"> <span class="fa fa-search"></span> Cari Anggota</button>
                                 </div>
-
+                                
+                                
+                            </form>
                                 <?php $data = Session::get('data_member') ?>
+                                <div class="table-responsive" style="width:100%;">
                                 @if(isset($data))
-                                <table class="table table-bordered table-result">
-                                    @foreach($data as $member)
-                                        <tr>
-                                            <td width="40%">{{$member->nama}}</td>
-                                            <td width="40%">{{$member->nomor_induk}}</td>
-                                            <td>
-                                                <button type="button" class="btn-tambah-member btn btn-success"
-                                                    data-nama="{{$member->nama}}"
-                                                    data-nis="{{$member->nomor_induk}}"
-                                                    data-id="{{$member->id}}"
-                                                    data-bs-toggle="modal" 
-                                                    data-bs-target="#PositionModal" >
-                                                    <span class="fa fa-plus"></span>
-                                                    Tambahkan
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </table>
+                         
+                                    <table class="table table-bordered table-result" style="width:100%">
+                                        @foreach($data as $member)
+                                            <tr>
+                                                <td width="40%">{{$member->nama}}</td>
+                                                <td width="40%">{{$member->nomor_induk}}</td>
+                                                <td>
+                                                    <button type="button" class="btn-tambah-member btn btn-success"
+                                                        data-nama="{{$member->nama}}"
+                                                        data-nis="{{$member->nomor_induk}}"
+                                                        data-id="{{$member->id}}"
+                                                        data-bs-toggle="modal" 
+                                                        data-bs-target="#PositionModal" >
+                                                        <span class="fa fa-plus"></span>
+                                                        Tambahkan
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </table>
+                                
                                 @endif
-
+                                </div>
                                 <?php $status = Session::get('status') ?>                            
                                 @if(isset($status))
                                 <div  style="width:100%" class="alert alert-primary" role="alert">
@@ -106,7 +111,6 @@
                                 </div>
                                 @endif
                             </div>
-                                </form>
                             </div>
                             <br>
                     @else
@@ -136,55 +140,57 @@
                                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                             @endif
-                        <table class="table table-bordered table-hover">
-                            <tr>
-                                <th width="10%">No</th>
-                                <th>Nama</th>
-                                <th>NIS</th>
-                                <th>Posisi</th>
-                                <th width="20%">Action</th>
-                            </tr>
-                            @php 
-                            $no = 1;
-                            $extend_no = 2; 
-                            @endphp
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover">
+                                <tr>
+                                    <th width="10%">No</th>
+                                    <th>Nama</th>
+                                    <th>NIS</th>
+                                    <th>Posisi</th>
+                                    <th width="20%">Action</th>
+                                </tr>
+                                @php 
+                                $no = 1;
+                                $extend_no = 2; 
+                                @endphp
 
-                            @foreach($getceo as $ceo)
-                            <tr>
-                                <td>{{$no++}}</td>
-                                <td>{{$ceo->nama}}</td>
-                                <td>{{$ceo->nomor_induk}}</td>
-                                <td>Hustler (CEO)</td>
-                                <td></td>
-                            </tr>
-                            @endforeach
+                                @foreach($getceo as $ceo)
+                                <tr>
+                                    <td>{{$no++}}</td>
+                                    <td>{{$ceo->nama}}</td>
+                                    <td>{{$ceo->nomor_induk}}</td>
+                                    <td>Hustler (CEO)</td>
+                                    <td></td>
+                                </tr>
+                                @endforeach
 
-                            @foreach($getmember as $member)
-                            <tr>
-                                <td>{{$extend_no++}}</td>
-                                <td>{{$member->nama}}</td>
-                                <td>{{$member->nomor_induk}}</td>
-                                <td>
-                                    @if($member->position == 2)
-                                        Hipster
-                                    @else
-                                        Hacker
-                                    @endif
-                                </td>
-                                <td>
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <button type="button" 
-                                        style="color:white"
-                                        class="btn btn-danger btn-delete-member"
-                                        data-id="{{$member->id}}"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#DeleteModal" 
-                                    ><span class="fas fa-window-close" ></span> Batalkan </button>
-                                </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </table>                  
+                                @foreach($getmember as $member)
+                                <tr>
+                                    <td>{{$extend_no++}}</td>
+                                    <td>{{$member->nama}}</td>
+                                    <td>{{$member->nomor_induk}}</td>
+                                    <td>
+                                        @if($member->position == 2)
+                                            Hipster
+                                        @else
+                                            Hacker
+                                        @endif
+                                    </td>
+                                    <td>
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button type="button" 
+                                            style="color:white"
+                                            class="btn btn-danger btn-delete-member"
+                                            data-id="{{$member->id}}"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#DeleteModal" 
+                                        ><span class="fas fa-window-close" ></span> Batalkan </button>
+                                    </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </table>  
+                        </div>                
                     </div>               
                 </div>
             </div>            

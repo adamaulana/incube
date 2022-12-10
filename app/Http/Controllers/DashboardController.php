@@ -42,7 +42,11 @@ class DashboardController extends Controller
                     return view('dashboard/ongoing');
                 }
             }elseif($track == 1 && $track_status == 0){
+                session()->forget('id_produk');
                 return redirect('/product_abstract');
+            }elseif($track == 1 && $track_status == 2){
+                session()->forget('id_produk');
+                return redirect('dashboard/ongoing');
             }else{
                 $id_produk = Session::get('id_produk');
                 $gettahap = DB::table('master_step')
