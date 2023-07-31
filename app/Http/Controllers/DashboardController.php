@@ -100,6 +100,10 @@ class DashboardController extends Controller
         return view('page/login');
     }
 
+    function tentang(){
+        return view('dashboard/tentang');
+    }
+
     function register_siswa(){
         return view('page/register_siswa');
     }

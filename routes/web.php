@@ -25,6 +25,7 @@ Route::get('/logout_siswa', 'SiswaController@logout');
 Route::post('/signin', 'SiswaController@login');
 // Route::get('/dashboard', 'DashboardController@index');
 Route::get('/login', 'DashboardController@login');
+Route::get('/tentang', 'DashboardController@tentang');
 
 // feedback
 Route::get('/feedback', 'FeedbackController@siswaFeedBack');

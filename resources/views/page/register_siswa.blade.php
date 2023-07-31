@@ -6,15 +6,28 @@
             margin:0px;
             width:100%;
             overflow-x:hidden;
-            min-height:100vh;
-            padding-top:20vh;
-            background-image: linear-gradient(to right, #03192E , #153A5C);
+            min-height:100vh;            
+            /* background-image: linear-gradient(to right, #03192E , #153A5C); */
+            background:url('{{asset('assets/images/bg_init.png')}}');
+            background-size:100% 100%;
         }
 
         #cover-page h1{
             color:white;
             font-size:60px;
             font-weight:700;
+        }
+
+        #cover-page .logo-incube{
+            width:300px;
+        }
+        #cover-page .logo-area{
+            padding:70px;
+        }
+        #cover-page .logo-area img{
+            display:inline-block;
+            height:40px;
+            margin-right:10px;
         }
         #cover-page .iso{
             width:100%;
@@ -59,8 +72,18 @@
         @media only screen and (max-width: 720px) {  
             #cover-page{
                 min-height:100vh;
-                padding-top:10vh
+                padding-top:10vh;
+                background-image: linear-gradient(to right, #03192E , #153A5C);
             } 
+            #cover-page .logo-area{
+                text-align:center;
+            }
+            #cover-page .logo-area img{
+                height:60px;
+            }
+            #cover-page .desc .logo-incube{
+                display:none;
+            }
             #cover-page .iso{
                 display:none;
             }
@@ -100,12 +123,20 @@
     </style>
 @endsection
 @section('content')
-<section  id="cover-page">    
+<section  id="cover-page">
+        <div class="row">
+            <div class="col-lg-12 logo-area">
+                <img src="{{asset('assets/images/logo_dark.png')}}" alt="">
+                <img src="{{asset('assets/images/logo_um.png')}}" alt="">
+            </div>
+        </div>     
         <div class="row">
             <div class="col-lg-5 col-12 hidden-xs desc"  data-aos="fade-up" data-aos-duration="1500">
-                <h1 class="nunito">IN<span class="main-text">CUBE<span></h1>
+                <h1 class="nunito">
+                    <img src="{{asset('assets/images/logo_dark.png')}}" class="logo-incube">
+                </h1>
                 <p class="text-white nunito">
-                INCUBE  adalah platform untuk menginkubasi bisnis siswa pada mata pelajara Produk Kreatif dan Kewirausahaan
+                INCUBE  adalah platform untuk menginkubasi bisnis siswa pada mata pelajara Projek Kreatif dan Kewirausahaan
                 </p>
                 <a href="{{url('/login')}}" class="btn bt-linear nunito">Masuk Akun</a>
             </div>

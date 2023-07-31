@@ -15,7 +15,10 @@
                 class="hide-menu">Feedback Mentor</span></a></li>                             
                 <li class="sidebar-item {{ (request()->is('penilaian')) ? 'selected' : '' }}"> <a data-locs="{{url('/penilaian')}}" class="sidebar-link waves-effect waves-dark sidebar-link"
                          aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
-                            class="hide-menu">Penilaian</span></a></li>            
+                            class="hide-menu">Penilaian</span></a></li>    
+                <li class="sidebar-item {{ (request()->is('tentang')) ? 'selected' : '' }}"> <a data-locs="{{url('/tentang')}}" class="sidebar-link waves-effect waves-dark sidebar-link"
+                         aria-expanded="false"><i class="mdi mdi-alert-circle-outline"></i><span
+                            class="hide-menu">Tentang Aplikasi</span></a></li>             
                 <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                          aria-expanded="false"><i class="mdi mdi-border-inside"></i><span
                             class="hide-menu">Mentoring</span></a></li>
